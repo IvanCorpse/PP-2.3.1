@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователи</title>
+</head>
+<body>
+<div align="center">
+    <div id="centerLayer">
+        <h2>Список пользователей</h2>
+        <table border="1" style="border-collapse:collapse;">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Фамилия</th>
+                <th scope="col">Возраст</th>
+                <th scope="col">Отдел</th>
+                <th scope="col">Должность</th>
+                <th scope="col">Просмотр</th>
+                <th scope="col">Обновить</th>
+                <th scope="col">Удалить</th>
+            </tr>
+            <tr th:each="user: ${usersList}">
+                <td align="center" th:utext="${user.id}"></td>
+                <td align="center" th:utext="${user.name}"></td>
+                <td align="center" th:utext="${user.surname}"></td>
+                <td align="center" th:utext="${user.age}"></td>
+                <td align="center" th:utext="${user.department}"></td>
+                <td align="center" th:utext="${user.position}"></td>
+                <td>
+                    <form th:action="@{/showUser}">
+                        <button type="submit" th:name="id" th:value="${user.getId()}">Просмотр</button>
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/updateUser}">
+                        <button type="submit" th:name="id" th:value="${user.getId()}">Обновить</button>
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/removeUser}">
+                        <button type="submit" th:name="id" th:value="${user.getId()}">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+
+        <br>
+        <input type="button" value="Add" onclick="window.location.href='addUser'"/>
+
+    </div>
+</div>
+</body>
+</html>
