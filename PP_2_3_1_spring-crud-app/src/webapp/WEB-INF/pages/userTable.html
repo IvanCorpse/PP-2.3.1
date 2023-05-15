@@ -34,12 +34,12 @@
                     </form>
                 </td>
                 <td>
-                    <form th:action="@{/updateUser}">
+                    <form th:action="@{/editUser}">
                         <button type="submit" th:name="id" th:value="${user.getId()}">Обновить</button>
                     </form>
                 </td>
                 <td>
-                    <form th:action="@{/removeUser}">
+                    <form th:method="DELETE" th:action="@{/removeUser}">
                         <button type="submit" th:name="id" th:value="${user.getId()}">Удалить</button>
                     </form>
                 </td>

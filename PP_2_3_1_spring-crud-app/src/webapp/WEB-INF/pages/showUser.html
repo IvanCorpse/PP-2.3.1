@@ -9,7 +9,7 @@
     <div id="centerLayer">
         <h2>Просмотр пользователя c Id <label th:utext="${user.id}"></label></h2>
         <br>
-        <form th:method="GET" th:action="@{/saveUser}" th:object="${user}">
+        <form th:method="DELETE" th:action="@{/showUser}" th:object="${user}">
 
             <label for="name">Имя</label>
             <input readonly type="text" th:field="*{name}" id="name"/>
@@ -32,10 +32,10 @@
             <br><br>
 
         </form>
-        <form th:action="@{/updateUser}">
+        <form th:action="@{/editUser}">
             <button type="submit" th:name="id" th:value="${user.getId()}">Обновить</button>
         </form>
-        <form th:action="@{/removeUser}">
+        <form th:method="DELETE" th:action="@{/removeUser}">
             <button type="submit" th:name="id" th:value="${user.getId()}">Удалить</button>
         </form>
         <br>
